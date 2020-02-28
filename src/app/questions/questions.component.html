@@ -1,1 +1,6 @@
 <p>questions works!</p>
+<ul>
+  <li *ngFor="let i of questions">
+    <a href="javascript:" [routerLink]="['/questions', i.id]">{{i.question_text}}</a>
+  </li>
+</ul>

@@ -1,0 +1,9 @@
+<div *ngIf="question">
+  <p>{{question?.question}}</p>
+  <ul>
+    <li *ngFor="let c of question['choices']">
+      <a href="">{{c.choice_text}}</a>
+    </li>
+  </ul>
+
+</div>

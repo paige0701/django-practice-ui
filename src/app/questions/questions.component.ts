@@ -7,13 +7,19 @@ import {QuestionsService} from './questions.service';
   styleUrls: ['./questions.component.css']
 })
 export class QuestionsComponent implements OnInit {
-
+  questions : IQuestion[] = [];
   constructor(private questionsService: QuestionsService) { }
 
   ngOnInit(): void {
     this.questionsService.getQuestions().subscribe((result) => {
-      console.info('result -- ', result)
+      this.questions = result;
     })
   }
 
+}
+
+interface IQuestion {
+  id: string;
+  question_text: string;
+  pub_date: any;
 }

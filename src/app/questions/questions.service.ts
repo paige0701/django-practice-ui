@@ -10,7 +10,12 @@ export class QuestionsService {
 
   constructor(private http: HttpClient) { }
   api: string = 'http://localhost:8000/api';
+
   getQuestions(): Observable<any> {
     return this.http.get(this.api + '/polls/') as Observable<any>
+  }
+
+  getQuestionDetail(id: string): Observable<any> {
+    return this.http.get(this.api + `/polls/${id}/` ) as Observable<any>
   }
 }
