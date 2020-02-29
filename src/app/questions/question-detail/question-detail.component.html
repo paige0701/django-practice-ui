@@ -1,9 +1,11 @@
 <div *ngIf="question">
   <p>{{question?.question}}</p>
-  <ul>
-    <li *ngFor="let c of question['choices']">
-      <a href="">{{c.choice_text}}</a>
+  <ul style="list-style: none; padding-inline-start: 10px">
+    <li *ngFor="let c of question.choices; let index=index" style="margin: 7px">
+      <input type="radio" id="{{index}}" name="'choice'" (change)="onChangeRadio(c)" style="margin: 10px">
+      <label class="txt-label" for="{{index}}">{{c.choice_text}}</label>
     </li>
   </ul>
+  <button (click)="onClickSubmit()">Submit</button>
 
 </div>

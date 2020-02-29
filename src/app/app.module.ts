@@ -4,7 +4,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app.routing.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {CookieService} from 'ngx-cookie-service';
+import {PostInterceptor} from './helpers/post.interceptor';
 
 
 @NgModule({
@@ -16,7 +18,11 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     BrowserModule,
   ],
-  providers: [],
+  providers:
+    [
+      {provide: HTTP_INTERCEPTORS, useClass: PostInterceptor, multi: true},
+      CookieService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
