@@ -6,14 +6,16 @@
 
 
 <h3>to start server</h3>
-```
+
+`
 npm start 
-```
+`
 
 <h3>Urls</h3>
-```
-/questions
 
+```
+/questions/ [GET]
+/{id}/vote/ [POST]
 ```
 
 ## Development server
