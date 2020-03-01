@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {QuestionsService} from '../questions.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class QuestionDetailComponent implements OnInit {
   selectedChoiceId: number;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private questionsService: QuestionsService) {
+              private questionsService: QuestionsService,
+              private router: Router) {
 
     this.activatedRoute.params.subscribe((result) => {
       try {
@@ -23,7 +24,10 @@ export class QuestionDetailComponent implements OnInit {
           this.question = result
         })
       } catch (e) {
-        console.error('fetch id error');
+        if (e.status !== 200) {
+          console.error(e)
+        }
+
       }
 
     })
@@ -42,15 +46,21 @@ export class QuestionDetailComponent implements OnInit {
     }
 
     // vote
-    this.questionsService.voteQuestion(this.questionId, this.selectedChoiceId).subscribe((result) => {
-      console.info(result)
-    })
+    this.questionsService.voteQuestion(this.questionId, this.selectedChoiceId)
+      .subscribe((result) => {
+    }, error1 => {
+        console.info(error1)
+      })
 
+  }
+
+  onClickResult() {
+    this.router.navigateByUrl(`/questions/${this.questionId}/result`)
   }
 
 }
 
-interface iQuestion {
+export interface iQuestion {
   question : string
-  choices: {id: string, choice_text: string}[]
+  choices: {id: string, choice_text: string, votes: number}[]
 }

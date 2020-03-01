@@ -19,6 +19,10 @@ export class QuestionsService {
     return this.http.get(this.api + `/polls/${id}/` ) as Observable<any>
   }
 
+  getQuestionResult(id: number): Observable<any> {
+    return this.http.get(this.api + `/polls/${id}/results/`) as Observable<any>
+  }
+
   voteQuestion(questionId: number, choiceId: number): Observable<any> {
     return this.http.post(this.api + `/polls/${questionId}/vote/`, {'choice': choiceId} )  as Observable<any>
   }
