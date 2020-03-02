@@ -4,12 +4,16 @@ import {RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'questions',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
+  { path: 'dashboard',
+    loadChildren: () => import('./home/home.module').then(mod => mod.HomeModule) },
   { path: 'questions',
     loadChildren: () => import('./questions/questions.module').then(mod => mod.QuestionsModule) },
-  { path: '**', redirectTo: 'questions', pathMatch: 'full'}
+  { path: 'language',
+    loadChildren: () => import('./language/language.module').then(mod => mod.LanguageModule) },
+  { path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
 
 ];
 

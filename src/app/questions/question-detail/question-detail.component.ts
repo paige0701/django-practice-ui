@@ -48,10 +48,8 @@ export class QuestionDetailComponent implements OnInit {
     // vote
     this.questionsService.voteQuestion(this.questionId, this.selectedChoiceId)
       .subscribe((result) => {
-    }, error1 => {
-        console.info(error1)
-      })
-
+        this.router.navigateByUrl(`/questions/${this.questionId}/result`)
+    })
   }
 
   onClickResult() {
