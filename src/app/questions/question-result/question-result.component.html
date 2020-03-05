@@ -1,8 +1,15 @@
-<div *ngIf="question">
-  <p>{{question?.question}}</p>
-  <ul style="list-style: none; padding-inline-start: 10px">
-    <li *ngFor="let c of question.choices; let index=index" style="margin: 7px">
-      {{c.choice_text}} - {{c.votes}}
-    </li>
-  </ul>
+
+<div class="container">
+  <div *ngIf="question">
+    <p>{{question?.question}}</p>
+    <ul style="list-style: none; padding-inline-start: 10px">
+      <li *ngFor="let c of question.choices; let index=index" style="margin: 7px">
+        {{c.choice_text}}
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 25%;" [style.width]="c.votes + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{c.votes}}%</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <button type="button" class="btn btn-info" (click)="onClickBack()">Back to polls</button>
 </div>

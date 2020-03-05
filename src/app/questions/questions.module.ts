@@ -18,7 +18,7 @@ const questionsRoutes: Routes = [
     CommonModule,
     RouterModule.forChild(questionsRoutes)
   ],
-  providers: [QuestionsService, PathLocationStrategy],
+  providers: [QuestionsService, PathLocationStrategy, Location],
   exports: [RouterModule],
 })
 export class QuestionsModule { }

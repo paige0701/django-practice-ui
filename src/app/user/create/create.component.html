@@ -1,3 +1,29 @@
-<form [formGroup]="createUserForm">
+<form [formGroup]="createUserForm" (ngSubmit)="onSubmit(createUserForm.value)">
+  <div>
+    <label for="email">
+      Email
+    </label>
+    <input type="text" id="email" formControlName="email">
+  </div>
+
+  <div>
+    <label for="password">
+      Password
+    </label>
+    <input type="text" id="password" formControlName="password">
+  </div>
+
+  <div>
+    <label for="password_confirm">
+      Password confirm
+    </label>
+    <input type="text" id="password_confirm" formControlName="password_confirm">
+  </div>
+  <div>
+    <label for="full_name">
+      Full name
+    </label>
+    <input type="text" id="full_name" formControlName="full_name">
+  </div>
   <button class="btn-danger" type="submit">Create</button>
 </form>
