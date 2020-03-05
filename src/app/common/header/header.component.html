@@ -17,7 +17,7 @@
     <span class="navbar-text">
       <!--User name / login-->
       <ng-container *ngIf="!isLoggedIn; else loggedin">
-        <a href="javascript:" [routerLink]="'/login'">Login</a>
+        <a href="javascript:" [routerLink]="'/user/login'">Login</a>
       </ng-container>
       <ng-template #loggedin>
         <li class="nav-item dropdown" style="display: block;">

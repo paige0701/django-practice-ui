@@ -7,6 +7,6 @@
     <label class="txt-label" for="'password-input'">Password</label>
     <input type="text" id="'password-input'" style="margin: 10px">
   </div>
-  <button>Login</button>
-  <button (click)="onClickCreateAccount()">Create Account</button>
+  <a href="javascript:" (click)="onClickLogin()" class="btn btn-dark">Login</a>
+  <a href="javascript:" [routerLink]="'/user/create'" class="btn btn-dark">Create</a>
 </div>
