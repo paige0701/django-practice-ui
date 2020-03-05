@@ -18,11 +18,11 @@ export class PostInterceptor implements HttpInterceptor {
       let csrf = this.cookieSerive.get('csrftoken');
       let sessionId = this.cookieSerive.get('sessionid');
       request = request.clone({
-        setHeaders: {
-          'X-CSRFToken': csrf,
-          'credentials': 'include',
-          'mode': 'same-origin',
-        }
+        // setHeaders: {
+        //   'X-CSRFToken': csrf,
+        //   'credentials': 'include',
+        //   'mode': 'same-origin',
+        // }
       });
     }
     return next.handle(request);
