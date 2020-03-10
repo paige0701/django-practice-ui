@@ -13,4 +13,8 @@ export class UserService {
   checkDuplicate(key: string, value: string): Observable<boolean> {
     return this.http.get(`${environment.host}/user/${key}/${value}/duplicate`) as Observable<boolean>
   }
+
+  loginUser(email: string, password: string): Observable<any> {
+    return this.http.post(`${environment.host}/account/login/`, {email, password}) as Observable<any>
+  }
 }

@@ -1,12 +1,28 @@
 <div>
-  <div>
-    <label class="txt-label" for="'username-input'">Email</label>
-    <input type="text" id="'username-input'" style="margin: 10px">
-  </div>
-  <div>
-    <label class="txt-label" for="'password-input'">Password</label>
-    <input type="text" id="'password-input'" style="margin: 10px">
-  </div>
-  <a href="javascript:" (click)="onClickLogin()" class="btn btn-dark">Login</a>
-  <a href="javascript:" [routerLink]="'/user/create'" >Create</a>
+  <form [formGroup]="loginForm" (ngSubmit)="onClickLogin()">
+    <div>
+      <label for="email">
+        Email
+      </label>
+      <input type="text" id="email" formControlName="email">
+      <!--<ng-container *ngFor="let validation of validation_messages.email">-->
+        <!--<span class="txt-message"-->
+              <!--[ngStyle]="{'display':(loginForm.dirty || loginForm.touched) && loginForm.status === 'INVALID' ? '' : 'none'}">-->
+          <!--{{validation.message}}-->
+      <!--</span>-->
+      <!--</ng-container>-->
+    </div>
+    <div>
+      <label for="password">password</label>
+      <input type="password" id="password" formControlName="password">
+      <!--<ng-container *ngFor="let validation of validation_messages.password">-->
+        <!--<span class="txt-message"-->
+              <!--[ngStyle]="{'display': loginForm.hasError(validation.type) && (loginForm.dirty || loginForm.touched) && loginForm.status === 'INVALID' ? 'block' : 'none'}">-->
+          <!--{{validation.message}}-->
+      <!--</span>-->
+      <!--</ng-container>-->
+    </div>
+    <button class="btn-danger" type="submit">Login</button>
+    <a href="javascript:" [routerLink]="'/user/create'" >Create</a>
+  </form>
 </div>

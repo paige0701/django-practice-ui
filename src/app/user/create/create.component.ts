@@ -20,7 +20,7 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
+}
 
   onSubmit(data) {
     console.info(data)

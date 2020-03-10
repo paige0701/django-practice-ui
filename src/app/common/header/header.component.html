@@ -16,19 +16,18 @@
     </ul>
     <span class="navbar-text">
       <!--User name / login-->
-      <ng-container *ngIf="!isLoggedIn; else loggedin">
+      <ng-container *ngIf="!isLoggedIn(); else loggedin">
         <a href="javascript:" [routerLink]="'/user/login'">Login</a>
       </ng-container>
       <ng-template #loggedin>
-        <li class="nav-item dropdown" style="display: block;">
+        <li class="nav-item dropdown" style="display: block; color:black">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+          <a class="dropdown-item" href="#javascript:" style=" color:black" (click)="onClickLogout()">Logout</a>
+          <div class="dropdown-divider" style=" color:black"></div>
+          <a class="dropdown-item" href="#" style=" color:black">Something else here</a>
         </div>
       </li>
       </ng-template>
