@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {LanguageService} from './language.service';
 
 @Component({
   selector: 'app-language',
@@ -8,14 +9,13 @@ import {Router} from '@angular/router';
 })
 export class LanguageComponent implements OnInit {
 
-  constructor() { }
+  categories;
+  constructor(private languageService: LanguageService) {
+    this.languageService.getCategories().subscribe((result) => {
+      this.categories = result;
+    })
+  }
 
-  categories = [{'id': 1, 'label': 'Numbers'},
-    {'id': 2, 'label': 'Months / Seasons / weather'},
-    {'id': 3, 'label': 'Countries'},
-    {'id': 4, 'label': 'Fruits / vegetables'},
-    {'id': 5, 'label': 'Drinks / Food'},
-    {'id': 6, 'label': 'Shapes / Colours'}];
   ngOnInit(): void {
   }
 }

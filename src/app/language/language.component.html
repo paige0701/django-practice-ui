@@ -2,17 +2,7 @@
   <span>Categories</span>
   <ul>
     <li *ngFor="let i of categories">
-      <a href="javascript:" [routerLink]="['/language', i.id]">{{i.label}}
-      </a>
-    </li>
-  </ul>
-</div>
-
-<div>
-  <span>Dates</span>
-  <ul>
-    <li *ngFor="let i of categories">
-      <a href="javascript:" [routerLink]="['/language', i.id]">{{i.label}}
+      <a href="javascript:" [routerLink]="['/language', i.id]">{{i.name}}
       </a>
     </li>
   </ul>

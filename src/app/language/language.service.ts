@@ -14,4 +14,8 @@ export class LanguageService {
     return this.http.get(`${environment.host}/lang/${catetory}/`) as Observable<any>
   }
 
+  getCategories(): Observable<any> {
+    return this.http.get(`${environment.host}/lang/categories/`) as Observable<any>
+  }
+
 }
