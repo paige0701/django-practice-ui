@@ -1,16 +1,15 @@
 <div><span>{{data?.name}}</span>
   <p>
-    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-      Show Months
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-right: 5px;">
+      Show words
     </a>
-    <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <a class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
       Test your skills
     </a>
   </p>
   <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-      <ul>
-        <table class="table">
+    <div class="card card-body" style="height:500px; overflow: auto;">
+        <table class="table table-wrapper-scroll-y" >
           <thead>
           <th scope="col">English</th>
           <th scope="col">Spanish</th>
@@ -22,7 +21,6 @@
           </tr>
           </tbody>
         </table>
-      </ul>
     </div>
   </div>
 </div>
