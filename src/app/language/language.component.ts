@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LanguageService} from './language.service';
+import {forkJoin} from 'rxjs/index';
 
 @Component({
   selector: 'app-language',
@@ -9,9 +10,14 @@ import {LanguageService} from './language.service';
 export class LanguageComponent implements OnInit {
 
   categories;
+  records;
   constructor(private languageService: LanguageService) {
-    this.languageService.getCategories().subscribe((result) => {
-      this.categories = result;
+    forkJoin({
+      'categories': this.languageService.getCategories(),
+      'records': this.languageService.getRecords()
+    }).subscribe((result) => {
+      this.categories = result['categories'];
+      this.records = result['records'];
     })
   }
 

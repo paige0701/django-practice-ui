@@ -1,4 +1,4 @@
-<div>
+<div style="margin: 10px;">
   <button>Create your own list</button>
 </div>
 
@@ -7,6 +7,16 @@
   <ul>
     <li *ngFor="let i of categories">
       <a href="javascript:" [routerLink]="['/language', i.id]">{{i.name}}
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <span>Your list</span>
+  <ul>
+    <li *ngFor="let i of records">
+      <a href="javascript:" [routerLink]="['/language', i]">{{i}}
       </a>
     </li>
   </ul>
