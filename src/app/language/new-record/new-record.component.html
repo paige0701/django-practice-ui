@@ -1,0 +1,95 @@
+<!--<div class="container-fluid">-->
+  <!--<p>Create your own list</p>-->
+  <!--<div>-->
+     <!--<table class="table table-wrapper-scroll-y">-->
+       <!--<thead>-->
+       <!--<th scope="col">No.</th>-->
+       <!--<th scope="col">English</th>-->
+       <!--<th scope="col">Korean</th>-->
+       <!--<th scope="col">Spanish</th>-->
+       <!--<th scope="col">Delete</th>-->
+       <!--</thead>-->
+       <!--<tbody>-->
+       <!--<tr *ngFor="let i of items">-->
+         <!--<td>{{i.no}}</td>-->
+         <!--<td><input type="text" value="{{i.eng}}"></td>-->
+         <!--<td><input type="text" value="{{i.kor}}"></td>-->
+         <!--<td><input type="text" value="{{i.esp}}"></td>-->
+         <!--<td><a href="javascript:">x</a></td>-->
+       <!--</tr>-->
+       <!--</tbody>-->
+     <!--</table>-->
+    <!--<div class="row">-->
+      <!--<a href="javascript:" (click)="onClickAdd()"> + Add another list</a>-->
+    <!--</div>-->
+    <!--<div class="row submit-row"  >-->
+      <!--<a href="javascript:" class="btn btn-info" (click)="onClickSubmit()">Add</a>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+<form [formGroup]="recordTable">
+  <table class="table table-border" [ngClass]="{'table-dark': mode}">
+    <thead class="text-nowrap">
+    <th>No</th>
+    <th>English</th>
+    <th>Korean</th>
+    <th>Spanish</th>
+    <th></th>
+    </thead>
+    <tbody>
+    <ng-container formArrayName="tableRows" *ngFor="let group of getFormControls?.controls ; let i=index">
+      <tr *ngIf="group.get('isEditable').value" [formGroupName]="i">
+        <td>
+          <mat-form-field>
+            <input matInput type="text" formControlName="no">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="text" formControlName="english">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="text"  formControlName="korean">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="text" formControlName="spanish">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-icon class="delete" (click)="deleteRow(i)">delete_forever</mat-icon>
+          <mat-icon class="done" (click)="doneRow(group)">done</mat-icon>
+        </td>
+      </tr>
+      <tr *ngIf="!group.get('isEditable').value">
+        <td>
+          {{group.get('no').value}}
+        </td>
+        <td>
+          {{group.get('english').value}}
+        </td>
+        <td>
+          {{group.get('korean').value}}
+        </td>
+        <td>
+          {{group.get('spanish').value}}
+        </td>
+        <td>
+          <mat-icon class="delete">x</mat-icon>
+        </td>
+
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <div class="action-container">
+    <button (click)="addRow()">Add row</button>
+    <!--<button mat-raised-button [disabled]="userTable.invalid" type="submit" (click)="submitForm()">Submit</button>-->
+  </div>
+</form>
+

@@ -1,12 +1,12 @@
 <div style="margin: 10px;">
-  <button>Create your own list</button>
+  <a [routerLink]="['/language/create']">Create your own list</a>
 </div>
 
 <div>
   <span>Categories</span>
   <ul>
     <li *ngFor="let i of categories">
-      <a href="javascript:" [routerLink]="['/language', i.id]">{{i.name}}
+      <a href="javascript:" [routerLink]="['/language/record', i.id]">{{i.name}}
       </a>
     </li>
   </ul>
@@ -16,7 +16,7 @@
   <span>Your list</span>
   <ul>
     <li *ngFor="let i of records">
-      <a href="javascript:" [routerLink]="['/language', i]">{{i}}
+      <a href="javascript:" [routerLink]="['/language/record', i]">{{i}}
       </a>
     </li>
   </ul>
