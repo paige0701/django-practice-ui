@@ -22,4 +22,8 @@ export class LanguageService {
     return this.http.get(`${environment.host}/lang/records/`) as Observable<any>
   }
 
+  createRecord(data): Observable<any> {
+    return this.http.post(`${environment.host}/lang/records/`, {records: data}) as Observable<any>
+  }
+
 }

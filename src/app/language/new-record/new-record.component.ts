@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {LanguageService} from '../language.service';
 
 @Component({
   selector: 'app-new-record',
@@ -12,7 +13,8 @@ export class NewRecordComponent implements OnInit, AfterViewInit {
   control: FormArray;
   touchedRows: any;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private languageService: LanguageService) { }
 
   ngOnInit(): void {
     this.touchedRows = [];
@@ -33,23 +35,21 @@ export class NewRecordComponent implements OnInit, AfterViewInit {
 
   initiateForm(): FormGroup {
     return this.fb.group({
-      english: new FormControl('', {
+      eng: new FormControl('', {
         updateOn: 'blur',
         validators: [
           Validators.required]
       }),
-      korean: new FormControl('', {
+      kor: new FormControl('', {
         updateOn: 'blur',
         validators: [
           Validators.required]
       }),
-      spanish: new FormControl('', {
+      esp: new FormControl('', {
         updateOn: 'blur',
         validators: [
           Validators.required]
       }),
-      check: [''],
-      isEditable: [true]
     })
   }
 
@@ -58,7 +58,9 @@ export class NewRecordComponent implements OnInit, AfterViewInit {
   }
 
   submitForm() {
-    console.info(this.recordTable.value)
+    this.languageService.createRecord(this.recordTable.value['tableRows']).subscribe((result) => {
+      console.info(result)
+    })
   }
 
   deleteRow(idx: number) {
