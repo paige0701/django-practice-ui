@@ -1,18 +1,15 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-new-record',
   templateUrl: './new-record.component.html',
   styleUrls: ['./new-record.component.css']
 })
-export class NewRecordComponent implements OnInit {
-
-  items = [];
+export class NewRecordComponent implements OnInit, AfterViewInit {
 
   recordTable: FormGroup;
   control: FormArray;
-  mode: boolean;
   touchedRows: any;
 
   constructor(private fb: FormBuilder) { }
@@ -23,28 +20,35 @@ export class NewRecordComponent implements OnInit {
       tableRows: this.fb.array([])
     });
     this.addRow();
-    // for (let i = 1 ; i <= 3; i++) {
-    //   this.items.push({'no': i, 'kor': '', 'eng': '', 'esp': ''})
-    // }
   }
 
-  ngAfterOnInit() {
+  ngAfterViewInit() {
     this.control = this.recordTable.get('tableRows') as FormArray
   }
 
   addRow() {
     const control = this.recordTable.get('tableRows') as FormArray;
     control.push(this.initiateForm())
-    console.info(control)
   }
 
   initiateForm(): FormGroup {
     return this.fb.group({
-      no: [1],
-      english: ['ㅇㅇ'],
-      korean: ['ㅇㅇ'],
-      spanish: ['ㅇㅇ'],
-      delete: ['x'],
+      english: new FormControl('', {
+        updateOn: 'blur',
+        validators: [
+          Validators.required]
+      }),
+      korean: new FormControl('', {
+        updateOn: 'blur',
+        validators: [
+          Validators.required]
+      }),
+      spanish: new FormControl('', {
+        updateOn: 'blur',
+        validators: [
+          Validators.required]
+      }),
+      check: [''],
       isEditable: [true]
     })
   }
@@ -53,8 +57,12 @@ export class NewRecordComponent implements OnInit {
     return this.recordTable.get('tableRows') as FormArray;
   }
 
-  doneRow() {
+  submitForm() {
+    console.info(this.recordTable.value)
+  }
 
+  deleteRow(idx: number) {
+    this.getFormControls.removeAt(idx)
   }
 
 
