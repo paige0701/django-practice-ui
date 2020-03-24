@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {LanguageService} from '../language.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-record',
@@ -14,7 +15,10 @@ export class NewRecordComponent implements OnInit, AfterViewInit {
   touchedRows: any;
 
   constructor(private fb: FormBuilder,
-              private languageService: LanguageService) { }
+              private languageService: LanguageService,
+              private router: Router) {
+
+  }
 
   ngOnInit(): void {
     this.touchedRows = [];
@@ -60,6 +64,9 @@ export class NewRecordComponent implements OnInit, AfterViewInit {
   submitForm() {
     this.languageService.createRecord(this.recordTable.value['tableRows']).subscribe((result) => {
       console.info(result)
+      let date = new Date()
+      let today = date.getFullYear() + '-' + (date.getMonth()+1 < 10 ? '0' + (date.getMonth()+1) : date.getMonth()+1) + '-' + (date.getDate() < 10 ? '0'+ date.getDate() : date.getDate())
+      this.router.navigateByUrl(`/language/record/${today}`)
     })
   }
 
