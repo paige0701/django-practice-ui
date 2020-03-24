@@ -17,6 +17,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
+import {AuthGuard} from './helpers/auth.guard';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {MatSelectModule} from '@angular/material/select';
   providers:
     [
       {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-      CookieService
+      CookieService,
+      AuthGuard
     ],
   bootstrap: [AppComponent]
 })
