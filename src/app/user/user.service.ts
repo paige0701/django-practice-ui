@@ -17,4 +17,8 @@ export class UserService {
   loginUser(email: string, password: string): Observable<any> {
     return this.http.post(`${environment.host}/account/login/`, {email, password}) as Observable<any>
   }
+
+  createUser(email: string, password: string, fullname: string): Observable<any> {
+    return this.http.post(`${environment.host}/account/create/`, {email, password, fullname}) as Observable<any>
+  }
 }

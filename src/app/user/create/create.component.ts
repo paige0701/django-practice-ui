@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {timer} from 'rxjs/index';
-import {switchMap} from 'rxjs-compat/operator/switchMap';
-import {map} from 'rxjs/internal/operators';
 import {UserService} from '../user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -15,7 +13,8 @@ export class CreateComponent implements OnInit {
   createUserForm: FormGroup
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router) {
     this.createForm()
   }
 
@@ -23,7 +22,11 @@ export class CreateComponent implements OnInit {
 }
 
   onSubmit(data) {
-    console.info(data)
+    // TODO : validation
+
+    this.userService.createUser(data.email, data.password, data.full_name).subscribe((result) => {
+      this.router.navigateByUrl('/dashboard')
+    })
   }
 
   createForm() {
