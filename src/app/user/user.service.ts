@@ -10,15 +10,17 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  api: string = `${environment.host}/api/`;
+
   checkDuplicate(key: string, value: string): Observable<boolean> {
-    return this.http.get(`${environment.host}/user/${key}/${value}/duplicate`) as Observable<boolean>
+    return this.http.get(`${this.api}user/${key}/${value}/duplicate`) as Observable<boolean>
   }
 
   loginUser(email: string, password: string): Observable<any> {
-    return this.http.post(`${environment.host}/account/login/`, {email, password}) as Observable<any>
+    return this.http.post(`${this.api}account/login/`, {email, password}) as Observable<any>
   }
 
   createUser(email: string, password: string, fullname: string): Observable<any> {
-    return this.http.post(`${environment.host}/account/create/`, {email, password, fullname}) as Observable<any>
+    return this.http.post(`${this.api}account/create/`, {email, password, fullname}) as Observable<any>
   }
 }

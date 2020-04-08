@@ -3,10 +3,9 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
-const HOST = '127.0.0.1:8000/api';
-// const HOST = 'localhost:5100';
+const HOST = 'http://django-app2.eba-hneaknrq.ap-northeast-2.elasticbeanstalk.com';
 export const environment = {
   production: false,
-  host : `http://${HOST}`,
+  host : `${HOST}`,
   hostName: HOST
 };

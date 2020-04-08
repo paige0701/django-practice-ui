@@ -10,20 +10,22 @@ export class LanguageService {
 
   constructor(private http: HttpClient) { }
 
+  api: string = `${environment.host}/api/lang/`;
+
   getWordsByCategory(catetory: number): Observable<any> {
-    return this.http.get(`${environment.host}/lang/${catetory}/`) as Observable<any>
+    return this.http.get(`${this.api}${catetory}/`) as Observable<any>
   }
 
   getCategories(): Observable<any> {
-    return this.http.get(`${environment.host}/lang/categories/`) as Observable<any>
+    return this.http.get(`${this.api}categories/`) as Observable<any>
   }
 
   getRecords(): Observable<any> {
-    return this.http.get(`${environment.host}/lang/records/`) as Observable<any>
+    return this.http.get(`${this.api}records/`) as Observable<any>
   }
 
   createRecord(data): Observable<any> {
-    return this.http.post(`${environment.host}/lang/records/`, {records: data}) as Observable<any>
+    return this.http.post(`${this.api}records/`, {records: data}) as Observable<any>
   }
 
 }
