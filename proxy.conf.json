@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://localhost:8000",
+    "target": "http://django-app2.eba-hneaknrq.ap-northeast-2.elasticbeanstalk.com",
     "secure": false
   }
 }

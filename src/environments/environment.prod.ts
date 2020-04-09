@@ -1,6 +1,6 @@
-const HOST = '127.0.0.1:8000/api';
+const HOST = 'http://django-app2.eba-hneaknrq.ap-northeast-2.elasticbeanstalk.com';
 export const environment = {
   production: true,
-  host : `http://${HOST}`,
+  host : `${HOST}`,
   hostName: HOST
 };
