@@ -1,28 +1,22 @@
-<div>
+<div class="container-fluid">
+  <h2>Sign in to Paige Random Apps!</h2>
+
   <form [formGroup]="loginForm" (ngSubmit)="onClickLogin()">
-    <div>
-      <label for="email">
-        Email
-      </label>
-      <input type="text" id="email" formControlName="email">
-      <!--<ng-container *ngFor="let validation of validation_messages.email">-->
-        <!--<span class="txt-message"-->
-              <!--[ngStyle]="{'display':(loginForm.dirty || loginForm.touched) && loginForm.status === 'INVALID' ? '' : 'none'}">-->
-          <!--{{validation.message}}-->
-      <!--</span>-->
-      <!--</ng-container>-->
+    <div class="form-group row">
+      <label for="email" class="col-sm-1 col-form-label">Email</label>
+      <div class="col-sm-4">
+        <input type="text" id="email" class="form-control" formControlName="email">
+      </div>
     </div>
-    <div>
-      <label for="password">password</label>
-      <input type="password" id="password" formControlName="password">
-      <!--<ng-container *ngFor="let validation of validation_messages.password">-->
-        <!--<span class="txt-message"-->
-              <!--[ngStyle]="{'display': loginForm.hasError(validation.type) && (loginForm.dirty || loginForm.touched) && loginForm.status === 'INVALID' ? 'block' : 'none'}">-->
-          <!--{{validation.message}}-->
-      <!--</span>-->
-      <!--</ng-container>-->
+
+    <div class="form-group row">
+      <label for="password" class="col-sm-1 col-form-label">Password</label>
+      <div class="col-sm-4">
+        <input type="password" id="password" class="form-control" formControlName="password">
+      </div>
     </div>
-    <button class="btn-danger" type="submit">Login</button>
-    <a href="javascript:" [routerLink]="'/user/create'" >Create</a>
+
+    <button type="submit" class="btn btn-primary">Sign in</button>
+
   </form>
 </div>
