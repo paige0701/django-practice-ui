@@ -1,29 +1,33 @@
-<form [formGroup]="createUserForm" (ngSubmit)="onSubmit(createUserForm.value)">
-  <div>
-    <label for="email">
-      Email
-    </label>
-    <input type="text" id="email" formControlName="email">
-  </div>
+<div class="container-fluid">
+  <h2>Create your account for Paige Random APP!</h2>
+  <form [formGroup]="createUserForm" (ngSubmit)="onSubmit(createUserForm.value)">
+    <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-4">
+        <input type="text" id="email" class="form-control" formControlName="email">
+      </div>
+    </div>
 
-  <div>
-    <label for="password">
-      Password
-    </label>
-    <input type="password" id="password" formControlName="password">
-  </div>
+    <div class="form-group row">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-4">
+        <input type="password" id="password" class="form-control" formControlName="password">
+      </div>
+    </div>
 
-  <div>
-    <label for="password_confirm">
-      Password confirm
-    </label>
-    <input type="password" id="password_confirm" formControlName="password_confirm">
-  </div>
-  <div>
-    <label for="full_name">
-      Full name
-    </label>
-    <input type="text" id="full_name" formControlName="full_name">
-  </div>
-  <button class="btn-danger" type="submit">Create</button>
-</form>
+    <div class="form-group row">
+      <label for="password_confirm" class="col-sm-2 col-form-label">Password confirm</label>
+      <div class="col-sm-4">
+        <input type="password" id="password_confirm" class="form-control" formControlName="password_confirm">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="full_name" class="col-sm-2 col-form-label">Full name</label>
+      <div class="col-sm-4">
+        <input type="text" id="full_name" class="form-control" formControlName="full_name">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>
