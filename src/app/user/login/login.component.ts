@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
     let email = this.loginForm.value.email;
     let password = this.loginForm.value.password;
     this.userService.loginUser(email, password).subscribe((result) => {
-      localStorage.setItem('token', result['token'])
+      localStorage.setItem('token', result['token']);
+      localStorage.setItem('user', result['full_name']);
       this.router.navigateByUrl('/home')
     }, error1 => {
       alert('failed to login')

@@ -14,12 +14,17 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getUserName() {
+    return localStorage.getItem('user')
+  }
+
   isLoggedIn() {
     return localStorage.getItem('token')
   }
 
   onClickLogout() {
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.router.navigateByUrl('/home')
   }
 

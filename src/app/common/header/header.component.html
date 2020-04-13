@@ -22,7 +22,7 @@
       <ng-template #loggedin>
         <li class="nav-item dropdown" style="display: block; color:black">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          {{getUserName()}}
         </a>
         <div class="dropdown-menu" style="min-width:8rem" aria-labelledby="navbarDropdown" >
           <a class="dropdown-item" href="javascript:" style=" color:black" (click)="onClickLogout()">Logout</a>
