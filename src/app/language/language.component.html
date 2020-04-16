@@ -1,34 +1,109 @@
-<div class="container-fluid">
-  <div class="card mb-3">
-    <div class="card-header">
-      Categories
-    </div>
-    <div class="card-body">
-      <ul>
-        <li *ngFor="let i of categories">
-          <a href="javascript:" [routerLink]="['/language/record', i.id]">{{i.name}}
-          </a>
-        </li>
-      </ul>
+<div class="row">
+  <div class="col-12">
+    <div class="page-title-box">
+      <h2 class="page-title">Dashboard</h2>
     </div>
   </div>
+</div>
 
-  <div class="card">
-    <div class="card-header">
-      <span>Your list</span>
-      <span style="float: right">
-        <button class="btn btn-info btn-sm" [routerLink]="['/language/create']">Create your own list</button>
-      </span>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Campaign Sent">Word of the day</h5>
+            <div class="col-6">
+              <h3 class="my-2 py-1">Hola</h3>
+              <p class="mb-0 text-muted">
+                <span class="text-success mr-2"><i class="mdi mdi-arrow-up-bold"></i>Hi</span>
+              </p>
+            </div>
 
-    </div>
-    <div class="card-body">
-      <ul>
-        <li *ngFor="let i of records">
-          <a href="javascript:" [routerLink]="['/language/record', i]">{{i}}
-          </a>
-        </li>
-      </ul>
-    </div>
+          </div>
+        </div> <!-- end row-->
+      </div> <!-- end card-body -->
+    </div> <!-- end card -->
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Campaign Sent">Phrase of the day</h5>
+            <div class="col-6">
+              <h3 class="my-2 py-1">Buenos Dias</h3>
+              <p class="mb-0 text-muted">
+                <span class="text-success mr-2"><i class="mdi mdi-arrow-up-bold"></i>Good morning!</span>
+              </p>
+            </div>
+
+          </div>
+        </div> <!-- end row-->
+      </div> <!-- end card-body -->
+    </div> <!-- end card -->
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Campaign Sent">Favourites</h5>
+            <ul>
+              <li *ngFor="let i of [1,2,3,4,5]">
+                <a href="javascript:">{{i}}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- end row-->
+      </div> <!-- end card-body -->
+    </div> <!-- end card -->
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Campaign Sent">Categories</h5>
+            <ul>
+              <li *ngFor="let i of categories">
+                <a href="javascript:" [routerLink]="['/language/record', i.id]">{{i.name}}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- end row-->
+      </div> <!-- end card-body -->
+    </div> <!-- end card -->
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Campaign Sent">Your list</h5>
+            <ul>
+              <li *ngFor="let i of records">
+                <a href="javascript:" [routerLink]="['/language/record', i]">{{i}}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- end row-->
+      </div> <!-- end card-body -->
+    </div> <!-- end card -->
   </div>
 </div>
 
