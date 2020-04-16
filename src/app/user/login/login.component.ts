@@ -50,13 +50,13 @@ export class LoginComponent implements OnInit {
   createForm() {
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', {
-        updateOn: 'blur',
+        updateOn: 'submit',
         validators: Validators.compose([
           Validators.required
         ])
       }),
       password: new FormControl('', {
-        updateOn: 'blur',
+        updateOn: 'submit',
         validators: Validators.compose([
           Validators.required
         ])
