@@ -53,7 +53,7 @@
 
 
 <div>
-  <app-detail-nav></app-detail-nav>
+  <app-detail-nav [title]="'Categories'"></app-detail-nav>
   <div>
     <ul class="list-group list-group-flush" *ngFor="let i of categories">
       <li class="list-group-item"><a href="javascript:">{{i.name}}</a></li>
