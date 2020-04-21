@@ -9,21 +9,31 @@ import {LanguageService} from '../language.service';
 
 })
 export class CategoryComponent implements OnInit {
+
+  categories;
+
   data: {
     'id': number, 'name': string, 'words' : {'id': number, 'eng': string, 'kor': string, 'esp': string}[]
   };
   randomItem: {'id': number, 'eng': string, 'kor': string, 'esp': string};
   constructor(private activatedRoute: ActivatedRoute,
               private langService: LanguageService) {
-    this.activatedRoute.params.subscribe((result) => {
-      this.langService.getWordsByCategory(result['id']).subscribe((result) => {
-        this.data = result;
-        this.onClickNext();
-      })
-    })
+    // this.activatedRoute.params.subscribe((result) => {
+    //   this.langService.getWordsByCategory(result['id']).subscribe((result) => {
+    //     this.data = result;
+    //     this.onClickNext();
+    //   })
+    // })
   }
 
   ngOnInit(): void {
+    this.getCategories()
+  }
+
+  getCategories() {
+    this.langService.getCategories().subscribe((result) => {
+      this.categories = result;
+    })
   }
 
   getRandomNumber(min, max) {
