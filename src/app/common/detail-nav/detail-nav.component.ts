@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-detail-nav',
@@ -8,7 +9,8 @@ import {Router} from '@angular/router';
 })
 export class DetailNavComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  constructor(private router : Router,
+              private location: Location) { }
 
   @Input()
   title: string;
@@ -18,9 +20,7 @@ export class DetailNavComponent implements OnInit {
   }
 
   onClickBack() {
-    if (this.title && this.title == 'Categories'){
-      this.router.navigateByUrl('/language')
-    }
+    this.location.back();
   }
 
   onSubmit() {

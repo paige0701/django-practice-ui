@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {LanguageService} from '../language.service';
 
 @Component({
@@ -17,7 +17,8 @@ export class CategoryComponent implements OnInit {
   };
   randomItem: {'id': number, 'eng': string, 'kor': string, 'esp': string};
   constructor(private activatedRoute: ActivatedRoute,
-              private langService: LanguageService) {
+              private langService: LanguageService,
+              private router: Router) {
     // this.activatedRoute.params.subscribe((result) => {
     //   this.langService.getWordsByCategory(result['id']).subscribe((result) => {
     //     this.data = result;
@@ -47,7 +48,11 @@ export class CategoryComponent implements OnInit {
     } else {
       this.randomItem = temp
     }
+  }
 
+  onClickCategory(id: number) {
+    console.info('clicked')
+    this.router.navigateByUrl(`/language/categories/${id}`)
   }
 
 }

@@ -3,11 +3,11 @@ import {ActivatedRoute} from '@angular/router';
 import {LanguageService} from '../../language.service';
 
 @Component({
-  selector: 'app-category-detail',
-  templateUrl: './category-detail.component.html',
-  styleUrls: ['./category-detail.component.css']
+  selector: 'app-recored-detail',
+  templateUrl: './recored-detail.component.html',
+  styleUrls: ['./recored-detail.component.css']
 })
-export class CategoryDetailComponent implements OnInit {
+export class RecoredDetailComponent implements OnInit {
 
   data;
 
