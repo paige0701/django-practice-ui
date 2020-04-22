@@ -77,7 +77,7 @@
             <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Campaign Sent">Categories</h5>
             <ul>
               <li *ngFor="let i of categories">
-                <a href="javascript:" [routerLink]="['/language/record', i.id]">{{i.name}}
+                <a href="javascript:" [routerLink]="['/language/categories', i.id]">{{i.name}}
                 </a>
               </li>
             </ul>
@@ -99,7 +99,7 @@
             <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Campaign Sent">Your list</h5>
             <ul>
               <li *ngFor="let i of records">
-                <a href="javascript:" [routerLink]="['/language/record', i]">{{i}}
+                <a href="javascript:" [routerLink]="['/language/records', i]">{{i}}
                 </a>
               </li>
             </ul>
