@@ -12,12 +12,19 @@ export class LanguageService {
 
   api: string = `${environment.host}/api/lang/`;
 
-  getWordsByCategory(catetory: number): Observable<any> {
-    return this.http.get(`${this.api}${catetory}/`) as Observable<any>
+  getWordsByCategory(category: number): Observable<any> {
+    return this.http.get(`${this.api}${category}/`) as Observable<any>
   }
 
-  getCategories(): Observable<any> {
-    return this.http.get(`${this.api}categories/`) as Observable<any>
+  getCategories(page_size=5, search_text?:string): Observable<any> {
+
+    let api = `${this.api}categories/?page_size=${page_size}`;
+
+    if (search_text) {
+      api += `&search_text=${search_text}`;
+    }
+
+    return this.http.get(api) as Observable<any>
   }
 
   getRecords(): Observable<any> {

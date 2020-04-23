@@ -19,12 +19,7 @@ export class CategoryComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private langService: LanguageService,
               private router: Router) {
-    // this.activatedRoute.params.subscribe((result) => {
-    //   this.langService.getWordsByCategory(result['id']).subscribe((result) => {
-    //     this.data = result;
-    //     this.onClickNext();
-    //   })
-    // })
+
   }
 
   ngOnInit(): void {
@@ -32,7 +27,7 @@ export class CategoryComponent implements OnInit {
   }
 
   getCategories() {
-    this.langService.getCategories().subscribe((result) => {
+    this.langService.getCategories(20).subscribe((result) => {
       this.categories = result;
     })
   }
