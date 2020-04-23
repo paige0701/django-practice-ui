@@ -27,8 +27,15 @@ export class LanguageService {
     return this.http.get(api) as Observable<any>
   }
 
-  getRecords(): Observable<any> {
-    return this.http.get(`${this.api}records/`) as Observable<any>
+  getRecords(page_size=5, search_text?:string): Observable<any> {
+
+    let api = `${this.api}records/?page_size=${page_size}`;
+
+    if (search_text) {
+      api += `&search_text=${search_text}`;
+    }
+
+    return this.http.get(api) as Observable<any>
   }
 
   createRecord(data): Observable<any> {

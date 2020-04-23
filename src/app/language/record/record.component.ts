@@ -19,7 +19,7 @@ export class RecordComponent implements OnInit {
   }
 
   getRecords() {
-    this.languageService.getRecords().subscribe((result) => {
+    this.languageService.getRecords(20).subscribe((result) => {
       this.data = result;
     })
   }
