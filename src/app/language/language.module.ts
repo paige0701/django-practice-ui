@@ -11,6 +11,7 @@ import { CategoryDetailComponent } from './category/category-detail/category-det
 import {DetailNavComponent} from '../common/detail-nav/detail-nav.component';
 import { RecordComponent } from './record/record.component';
 import { RecoredDetailComponent } from './record/recored-detail/recored-detail.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -31,6 +32,7 @@ const languageRoutes: Routes = [
     FormsModule,
     MatIconModule,
     MatInputModule,
+    NgxPaginationModule
   ]
 })
 export class LanguageModule { }

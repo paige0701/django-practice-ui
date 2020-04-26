@@ -16,9 +16,13 @@ export class LanguageService {
     return this.http.get(`${this.api}${category}/`) as Observable<any>
   }
 
-  getCategories(page_size=5, search_text?:string): Observable<any> {
+  getCategories(page_size=5, page: number=1, search_text?:string): Observable<any> {
 
     let api = `${this.api}categories/?page_size=${page_size}`;
+
+    if (page !== 1) {
+      api += `&page=${page}`;
+    }
 
     if (search_text) {
       api += `&search_text=${search_text}`;

@@ -12,6 +12,8 @@ export class CategoryComponent implements OnInit {
 
   categories;
 
+  page_size: number = 5;
+
   data: {
     'id': number, 'name': string, 'words' : {'id': number, 'eng': string, 'kor': string, 'esp': string}[]
   };
@@ -26,8 +28,8 @@ export class CategoryComponent implements OnInit {
     this.getCategories()
   }
 
-  getCategories() {
-    this.langService.getCategories(20).subscribe((result) => {
+  getCategories(page: number = 1, search_text?:string) {
+    this.langService.getCategories(this.page_size, page, search_text).subscribe((result) => {
       this.categories = result;
     })
   }
@@ -46,8 +48,11 @@ export class CategoryComponent implements OnInit {
   }
 
   onClickCategory(id: number) {
-    console.info('clicked')
     this.router.navigateByUrl(`/language/categories/${id}`)
+  }
+
+  pageChanged(data) {
+    this.getCategories(data);
   }
 
 }

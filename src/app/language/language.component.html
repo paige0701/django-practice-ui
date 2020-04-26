@@ -76,7 +76,7 @@
             <div class="float-right"><a href="javascript:" [routerLink]="'/language/categories'">more</a></div>
             <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Campaign Sent">Categories</h5>
             <ul>
-              <li *ngFor="let i of categories">
+              <li *ngFor="let i of categories['data']">
                 <a href="javascript:" [routerLink]="['/language/categories', i.id]">{{i.name}}
                 </a>
               </li>
