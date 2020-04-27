@@ -1,11 +1,18 @@
 <div *ngIf="categories">
   <app-detail-nav [title]="'Categories'" (searchEvent)="onSearchEvent($event)"></app-detail-nav>
-  <div>
+  <div *ngIf="categories['data'].length > 0 ; else nodata">
     <ul class="list-group list-group-flush" *ngFor="let i of categories['data'] | paginate:
     { id: 'category', itemsPerPage: page.ITEMS_PER_PAGE, currentPage: page.CURRENT_PAGE,
      totalItems: page.TOTAL_ITEMS}">
       <li class="list-group-item"><a href="javascript:" (click)="onClickCategory(i.id)">{{i.name}}</a></li>
     </ul>
   </div>
-  <pagination-controls id="category" (pageChange)="pageChanged($event)"></pagination-controls>
+  <ng-template #nodata>
+    <div class="card" style="margin-top: 20px">
+      <div class="card-body">
+        <h5 class="card-title">No data</h5>
+      </div>
+    </div>
+  </ng-template>
+  <pagination-controls id="category" (pageChange)="pageChanged($event)" *ngIf="page.TOTAL_ITEMS > 0"></pagination-controls>
 </div>
