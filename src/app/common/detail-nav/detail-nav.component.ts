@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 
@@ -15,6 +15,12 @@ export class DetailNavComponent implements OnInit {
   @Input()
   title: string;
 
+  @ViewChild('searchInput')
+  searchInput: ElementRef;
+
+  @Output()
+  searchEvent = new EventEmitter();
+
   ngOnInit(): void {
 
   }
@@ -25,7 +31,7 @@ export class DetailNavComponent implements OnInit {
 
   onSubmit() {
     // search list
-    console.info('submit')
+    this.searchEvent.emit(this.searchInput.nativeElement.value)
   }
 
 }

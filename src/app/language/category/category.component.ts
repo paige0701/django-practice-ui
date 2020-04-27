@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LanguageService} from '../language.service';
+import {Page} from '../../common/constant/common';
 
 @Component({
   selector: 'app-category',
@@ -12,7 +13,11 @@ export class CategoryComponent implements OnInit {
 
   categories;
 
+  searchText: string;
+
   page_size: number = 5;
+
+  page: Page;
 
   data: {
     'id': number, 'name': string, 'words' : {'id': number, 'eng': string, 'kor': string, 'esp': string}[]
@@ -31,6 +36,7 @@ export class CategoryComponent implements OnInit {
   getCategories(page: number = 1, search_text?:string) {
     this.langService.getCategories(this.page_size, page, search_text).subscribe((result) => {
       this.categories = result;
+      this.page = new Page(result['page']);
     })
   }
 
@@ -52,7 +58,13 @@ export class CategoryComponent implements OnInit {
   }
 
   pageChanged(data) {
-    this.getCategories(data);
+    this.page.CURRENT_PAGE = data;
+    this.getCategories(this.page.CURRENT_PAGE);
+  }
+
+  onSearchEvent(data) {
+    this.searchText = data;
+    this.getCategories(this.page.CURRENT_PAGE, this.searchText)
   }
 
 }
