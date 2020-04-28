@@ -12,6 +12,10 @@ export class LanguageService {
 
   api: string = `${environment.host}/api/lang/`;
 
+  getWordOfTheDay(): Observable<any> {
+    return this.http.get(`${this.api}word/`) as Observable<any>
+  }
+
   getWordsByCategory(category: number): Observable<any> {
     return this.http.get(`${this.api}${category}/`) as Observable<any>
   }

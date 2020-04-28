@@ -6,36 +6,17 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-lg-6">
+<div class="row" *ngIf="word">
+  <div class="col-lg-12">
     <div class="card">
       <div class="card-body">
         <div class="row align-items-center">
           <div class="col-12">
             <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Campaign Sent">Word of the day</h5>
             <div class="col-6">
-              <h3 class="my-2 py-1">Hola</h3>
+              <h3 class="my-2 py-1">{{word.esp}}</h3>
               <p class="mb-0 text-muted">
-                <span class="text-success mr-2"><i class="mdi mdi-arrow-up-bold"></i>Hi</span>
-              </p>
-            </div>
-
-          </div>
-        </div> <!-- end row-->
-      </div> <!-- end card-body -->
-    </div> <!-- end card -->
-  </div>
-
-  <div class="col-lg-6">
-    <div class="card">
-      <div class="card-body">
-        <div class="row align-items-center">
-          <div class="col-12">
-            <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Campaign Sent">Phrase of the day</h5>
-            <div class="col-6">
-              <h3 class="my-2 py-1">Buenos Dias</h3>
-              <p class="mb-0 text-muted">
-                <span class="text-success mr-2"><i class="mdi mdi-arrow-up-bold"></i>Good morning!</span>
+                <span class="text-success mr-2"><i class="mdi mdi-arrow-up-bold"></i>{{word.eng}}</span>
               </p>
             </div>
 
@@ -67,7 +48,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="categories">
   <div class="col-lg-12">
     <div class="card">
       <div class="card-body">
@@ -89,7 +70,7 @@
 </div>
 
 
-<div class="row">
+<div class="row" *ngIf="records">
   <div class="col-lg-12">
     <div class="card">
       <div class="card-body">
